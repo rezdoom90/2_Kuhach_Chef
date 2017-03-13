@@ -1,5 +1,7 @@
 package by.epam.chef.entity;
 
+import by.epam.chef.exception.WrongInputException;
+
 import static by.epam.chef.entity.VegetableCategory.FRUIT;
 
 /**
@@ -11,12 +13,12 @@ public class FruitVegetable extends Vegetable {
         this.setCategory(FRUIT);
     }
 
-    public FruitVegetable(String name, double calories) {
+    public FruitVegetable(String name, double calories) throws WrongInputException {
         super(name, calories);
         this.setCategory(FRUIT);
     }
 
-    public FruitVegetable(String name, double calories, double weight) {
+    public FruitVegetable(String name, double calories, double weight) throws WrongInputException {
         super(name, calories, weight);
         this.setCategory(FRUIT);
     }

@@ -1,5 +1,7 @@
 package by.epam.chef.entity;
 
+import by.epam.chef.exception.WrongInputException;
+
 /**
  * Created by Антон on 07.03.2017.
  */
@@ -13,9 +15,9 @@ abstract public class Vegetable {
         this.name = name;
     }
 
-    public Vegetable(String name, double calories) {
+    public Vegetable(String name, double calories) throws WrongInputException {
         if (calories < 0) {
-            throw new IllegalArgumentException("Cannot create vegetable with "
+            throw new WrongInputException("Cannot create vegetable with "
                     + calories + "kcal");
         }
 
@@ -23,14 +25,14 @@ abstract public class Vegetable {
         this.calories = calories;
     }
 
-    public Vegetable(String name, double calories, double weight) {
+    public Vegetable(String name, double calories, double weight) throws WrongInputException {
         if (calories < 0) {
-            throw new IllegalArgumentException("Cannot create vegetable with "
+            throw new WrongInputException("Cannot create vegetable with "
                     + calories + "kcal!");
         }
 
         if (weight < Double.MIN_NORMAL) {
-            throw new IllegalArgumentException("Cannot create " + weight
+            throw new WrongInputException("Cannot create " + weight
                     + "g of " + name + "!");
         }
 
@@ -73,13 +75,11 @@ abstract public class Vegetable {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Vegetable{");
-        sb.append(name);
-        sb.append(" is a ").append(category.getName());
-        sb.append(" vegetable, ").append(calories);
-        sb.append(" kcal per 100g, weight is ").append(weight);
-        sb.append("g.");
-        sb.append('}');
+        final StringBuffer sb = new StringBuffer();
+        sb.append(weight).append(" grams of ");
+        sb.append(category.getName()).append(" ");
+        sb.append(name).append(", ");
+        sb.append(calories).append(" kcal per 100g. ");
         return sb.toString();
     }
 }

@@ -1,0 +1,1 @@
+2017-03-13 07:35:02.922 [main] INFO  by.epam.chef.logic.VegetableLogic - Received total calories successfully.
